@@ -1,4 +1,9 @@
-const session = require("express-session");
+const session = require("express-session"); //  npm package to generate sessions in Express
+const MongoStore = require("connect-mongo"); // npm package to store session data inside our database
+const mongoose = require("mongoose"); // Handle MONGODB
+
+//Exports the info from the session and cookies to we have
+// data persistence between the different HTTP requests.
 module.exports = (app) => {
   app.use(
     session({
