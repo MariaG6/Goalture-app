@@ -1,0 +1,10 @@
+<!-- views goals -->
+<h1>Goal Details</h1>
+<p>Title: {{ goal.title }}</p>
+<p>Category: {{ goal.category }}</p>
+{{!-- Loop through the steps --}}
+<ul>
+  {{#each goal.steps}}
+    <li>{{ this.type }} (Completed: {{ this.isCompleted }})</li>
+  {{/each}}
+</ul>
