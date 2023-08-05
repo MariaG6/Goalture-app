@@ -1,9 +1,12 @@
 const { Schema, model } = require("mongoose");
 
 const stepSchema = new Schema({
-  type: {
+  step: {
     type: String,
     required: true,
+  },
+  blockers: {
+    type: String,
   },
   isCompleted: {
     type: Boolean,
@@ -31,9 +34,9 @@ const goalSchema = new Schema(
       required: true,
       validate: {
         validator: function (value) {
-          return value.length === 3;
+          return value.length < 3 || value.length > 6;
         },
-        message: "Goal must contain at least 3 steps",
+        message: "Goal must contain at least 3 steps and max 6",
       },
     },
     category: {

@@ -1,26 +1,26 @@
 <h1>Create your goal</h1>
 
-<form action="/createGoal" method="POST">
-  <label for="user">
-    User:
-    <input type="text" name="user" required />
-    <br />
-  </label>
-
-  <label for="title">
-    Title:
-    <input type="text" name="title" required />
-    <br />
-  </label>
-
-  <div>
-    <label for="steps">Steps:
-      <input type="text" /> 
-      <label for="isCompleted">Done</label>
-      <input type="checkbox" name="isCompleted" /><br />
+<form id="steps-form">
+    <label for="steps">
+      Steps:
+      <ol id="step-container">
+        <li><input type="text" name="step" />
+      Do you have any blockers?
+      <input type="text" name="blockers" /><br />
+      <label for="isCompleted">Done</label> 
+      <input type="checkbox" name="isCompleted" /><br /></li>
+      </ol>
     </label>
-    <button type="submit">+ Create a new step</button>
-  </div>
+    <small>Goal must contain at least 3 steps and max 6</small>
+    <button id="new-step">+ Create a new step</button>
+</form>
+
+<form action="/createGoal" method="POST"></form>
+  <label for="title">
+    What is your goal?
+    <input type="text" name="title" required placeholder="Goals title" />
+    <br />
+  </label>
 
   <label for="category">Category:
     <select name="category" required>
@@ -46,10 +46,36 @@
   </div>
 
   <label for="isPublic">Public:
-    <input type="checkbox" name="isPublic" /></label><br />
+    <input type="checkbox" name="isPublic" /></label>
 
   <label for="isPrivate">Private:
     <input type="checkbox" name="isPrivate" /></label><br />
 
   <button>CREATE YOUR GOAL!</button>
 </form>
+
+{{!-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const botonCrearPaso = document.getElementById('crearPaso');
+      const stepsList = document.getElementById('stepsList');
+      let contadorPasos = 1;
+
+      botonCrearPaso.addEventListener('click', function() {
+        const nuevoPaso = document.createElement('li');
+        nuevoPaso.innerHTML = `
+          <input type="text" name="step" />
+          Do you have any blockers?
+          <input type="text" name="blockers" /><br />
+          <label for="isCompleted">Done</label> 
+          <input type="checkbox" name="isCompleted" /><br />
+        `;
+
+        stepsList.appendChild(nuevoPaso);
+        contadorPasos++;
+      });
+    });
+  </script>
+ --}}
+
+
+

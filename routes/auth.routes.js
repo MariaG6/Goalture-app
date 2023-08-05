@@ -11,7 +11,6 @@ router.get("/signup", (req, res) => res.render("auth/signup"));
 // POST route to process the user data to signup
 router.post("/signup", (req, res) => {
   const { username, email, password } = req.body;
-  console.log(req.body)
   // Validation to have all the data
   if (username === "" || email === "" || password === "") {
     res.render("/signup", {
@@ -84,5 +83,11 @@ router.post("/login", (req, res) => {
     })
     .catch((error) => console.log(error));
 });
+
+router.get('/userProfile',(req,res)=> res.render('user/userProfile.hbs'))
+router.get('/createGoal',(req,res)=> res.render('goals/create.goal.hbs'))
+
+
+
 
 module.exports = router;

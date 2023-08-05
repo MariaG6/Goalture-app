@@ -8,9 +8,12 @@ const express = require("express");
 const router = express.Router();
 
 // GET route to display the "Create my Goal" page
-router.get("/create-goal", (req, res) => {
-  res.render("createGoal"); // Render the createGoal.hbs view
-});
+// router.get("/create-goal", (req, res) => {
+//   res.render("createGoal"); // Render the createGoal.hbs view
+// });
+router.get('/createGoal',(req,res)=>{
+  res.render('goals/create.goal')
+})
 
 // POST route to handle goal creation form submission
 router.post("/create-goal", (req, res) => {
