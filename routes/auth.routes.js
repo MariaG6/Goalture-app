@@ -11,7 +11,7 @@ router.get("/signup", (req, res) => res.render("auth/signup"));
 // POST route to process the user data to signup
 router.post("/signup", (req, res) => {
   const { username, email, password } = req.body;
-
+  console.log(req.body)
   // Validation to have all the data
   if (username === "" || email === "" || password === "") {
     res.render("/signup", {
@@ -35,7 +35,7 @@ router.post("/signup", (req, res) => {
     .genSalt(saltRounds)
     .then((salt) => bcryptjs.hash(password, salt))
     .then(
-      (hashedPassword) => User.create({ username, password: hashedPassword }) // ! Create a user
+      (hashedPassword) => User.create({ username, email, password: hashedPassword }) // ! Create a user
     )
     .then((userDB) => res.redirect("userProfile", { userDB })) // <-- Send the user to userprofile with userdata
     .catch((error) => {
@@ -77,7 +77,7 @@ router.post("/login", (req, res) => {
       } else if (bcryptjs.compareSync(password, user.password)) {
         // Check if the password is correct
         req.session.currentUser = user; // Save the session info into user variable
-        res.redirect("/userProfile", { user }); // <-- Send the user to userprofile with userdata
+        res.redirect("/userProfile"); // <-- Send the user to userprofile
       } else {
         res.render("auth/login", { errorMessage: "Incorrect password" });
       }

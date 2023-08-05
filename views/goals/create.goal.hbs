@@ -1,3 +1,55 @@
-<h2>Create your goal</h2>
+<h1>Create your goal</h1>
+
 <form action="/createGoal" method="POST">
+  <label for="user">
+    User:
+    <input type="text" name="user" required />
+    <br />
+  </label>
+
+  <label for="title">
+    Title:
+    <input type="text" name="title" required />
+    <br />
+  </label>
+
+  <div>
+    <label for="steps">Steps:
+      <input type="text" /> 
+      <label for="isCompleted">Done</label>
+      <input type="checkbox" name="isCompleted" /><br />
+    </label>
+    <button type="submit">+ Create a new step</button>
+  </div>
+
+  <label for="category">Category:
+    <select name="category" required>
+      <option value="Health">Health</option>
+      <option value="Sports">Sports</option>
+      <option value="Personal Life">Personal Life</option>
+      <option value="Education">Education</option>
+      <option value="Career">Career</option>
+      <option value="Family">Family</option>
+      <option value="Financial goals">Financial goals</option>
+      <option value="Lifestyle">Lifestyle</option>
+      <option value="Stop bad habits">Stop bad habits</option>
+    </select>
+  </label><br />
+
+  <div>
+    <label for="reason">
+      <p>
+        Why do you want this?
+      </p>
+      <textarea name="reason"> </textarea>
+    </label>
+  </div>
+
+  <label for="isPublic">Public:
+    <input type="checkbox" name="isPublic" /></label><br />
+
+  <label for="isPrivate">Private:
+    <input type="checkbox" name="isPrivate" /></label><br />
+
+  <button>CREATE YOUR GOAL!</button>
 </form>

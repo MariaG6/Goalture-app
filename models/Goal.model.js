@@ -1,23 +1,19 @@
 const { Schema, model } = require("mongoose");
 
-const steps = new Schema({
+const stepSchema = new Schema({
   type: {
     type: String,
-    required: true
+    required: true,
   },
   isCompleted: {
     type: Boolean,
-    default: false
-  }
-})
-
-
-
+    default: false,
+  },
+});
 
 // The goalSchema with a defined property user that will be connected to MongoDB to provide unique ObjectID
-//and the steps with a validation of at least 3 steps. 
+//and the steps with a validation of at least 3 steps.
 //To do:  Create an enum with different categories as part of the Goal Schema
-
 
 const goalSchema = new Schema(
   {
@@ -28,7 +24,7 @@ const goalSchema = new Schema(
     },
     title: {
       type: String,
-      required: true
+      required: true,
     },
     steps: {
       type: [stepSchema],
@@ -42,17 +38,30 @@ const goalSchema = new Schema(
     },
     category: {
       type: String,
-      enum: ["Health", "Sports", "Personal Life", "Education", "Career", "Family", "Financial goals", "Lifestyle", "Stop bad habits"],
-      required: true
+      enum: [
+        "Health",
+        "Sports",
+        "Personal Life",
+        "Education",
+        "Career",
+        "Family",
+        "Financial goals",
+        "Lifestyle",
+        "Stop bad habits",
+      ],
+      required: true,
     },
-    isPublic : { 
+    reason: {
+      type: String,
+    },
+    isPublic: {
       type: Boolean,
       default: false,
-    }, 
+    },
     isPrivate: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   {
     timestamps: true,
@@ -62,4 +71,3 @@ const goalSchema = new Schema(
 const Goal = model("Goal", goalSchema);
 
 module.exports = Goal;
-
