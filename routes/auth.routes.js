@@ -85,7 +85,6 @@ router.post("/login", (req, res) => {
 });
 
 router.get('/userProfile',(req,res)=> res.render('user/userProfile.hbs'))
-router.get('/createGoal',(req,res)=> res.render('goals/create.goal.hbs'))
 
 
 

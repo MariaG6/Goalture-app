@@ -1,12 +1,17 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Brand colors: 
+#f6f6f0: Cream
+#cfc479: Pale Gold
+#c3c088: Khaki Green
+#b7bc98: Greenish Gray
+#acb9a8: Dusty Green
+*/
+
+/* Global Styles */
+* {
+  background-color: #f6f6f0;
 }
 
-a {
-  color: #00b7ff;
-}
-
-h1 {
-  color: 15px;
+/* Navigation Bar */
+.nav-bar {
+  background-color: #f6f6f0;
 }
