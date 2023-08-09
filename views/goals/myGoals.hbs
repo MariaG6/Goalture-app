@@ -1,0 +1,32 @@
+<!-- views goals -->
+<h1>My Goals</h1>
+<ul>
+  {{#each goals}}
+  <li>
+    <a href="/goal/{{this._id}}">
+    {{this.title}}
+    </a>
+  </li>
+  {{/each}}
+</ul>
+
+  {{/each}}
+
+
+<p>Title: {{goal.title}}</p>
+<p>Category: {{goal.category}}</p>
+<p>Reason: {{goal.reason}} </p>
+<p>Public: {{goal.isPublic}}</p>
+<p>Private: {{goal.isPrivate}}</p>
+
+<ul>
+  {{#each goal.steps}}
+    <li>
+      <a href="/goal/{{this._id}}">
+        {{this.type}}
+      </a>
+      (Completed:
+      {{this.isCompleted}})
+    </li>
+  {{/each}}
+</ul>

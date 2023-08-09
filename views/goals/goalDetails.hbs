@@ -1,10 +1,17 @@
-<!-- views goals -->
-<h1>Goal Details</h1>
-<p>Title: {{ goal.title }}</p>
-<p>Category: {{ goal.category }}</p>
-{{!-- Loop through the steps --}}
-<ul>
-  {{#each goal.steps}}
-    <li>{{ this.type }} (Completed: {{ this.isCompleted }})</li>
-  {{/each}}
-</ul>
+<h1>Goal details</h1>
+
+<div>
+    <h2>{{goal.title}}</h2>
+    <p>Category: {{goal.category}}</p>
+    <p>Reason: {{goal.reason}}</p>
+    <p>Is Public: {{goal.isPublic}}</p>
+    <p>Is Private: {{goal.isPrivate}}</p>
+    <p>Steps:</p>
+    <ul>
+        {{each goal.steps}}
+        <li>{{this.type}} (Completed: {{this.isCompleted}})</li> 
+        {{/each}}
+    </ul>
+
+</div>
+

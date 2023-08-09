@@ -34,7 +34,8 @@ router.post("/signup", (req, res) => {
     .genSalt(saltRounds)
     .then((salt) => bcryptjs.hash(password, salt))
     .then(
-      (hashedPassword) => User.create({ username, email, password: hashedPassword }) // ! Create a user
+      (hashedPassword) =>
+        User.create({ username, email, password: hashedPassword }) // ! Create a user
     )
     .then((userDB) => res.redirect("userProfile", { userDB })) // <-- Send the user to userprofile with userdata
     .catch((error) => {
@@ -84,10 +85,6 @@ router.post("/login", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-router.get('/userProfile',(req,res)=> res.render('user/userProfile.hbs'))
-router.get('/createGoal',(req,res)=> res.render('goals/create.goal.hbs'))
-
-
-
+router.get("/userProfile", (req, res) => res.render("user/userProfile.hbs"));
 
 module.exports = router;
