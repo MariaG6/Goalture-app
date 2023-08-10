@@ -1,14 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const mongoose = require("mongoose");
-const Goal = require("../models/Goal.model");
+const router = require("express").Router(); // Require express to create routes
+const mongoose = require("mongoose"); // Handle MONDODB
+const Goal = require("../models/Goal.model"); // goalSchema connected to MONGODB
 
 // Create a route for the Create Goal
 // Create a route to see all the goals page.
-// GET route to display the "Create my Goal" page
+
+// GET route to display the "Create Goal" form
 router.get("/createGoal", (req, res) => {
-  console.log("Accessed/ createGoal route")
-  res.render("createGoal"); // Render the createGoal.hbs view
+  res.render("goals/createGoal"); // Render the createGoal.hbs view
 });
 
 router.post("/createGoal", async (req, res) => {
@@ -25,7 +24,7 @@ router.post("/createGoal", async (req, res) => {
       isPrivate,
       steps,
     });
-    res.redirect("/my-goals"); // Redirect to the "My Goals" page after the goal is created
+    res.redirect("my-goals"); // Redirect to the "My Goals" page after the goal is created
   } catch (error) {
     console.log(error);
     res.render("createGoal", {
@@ -35,15 +34,15 @@ router.post("/createGoal", async (req, res) => {
 });
 
 // GET route to display the "My Goals" page
-router.get("/my-goals", async (req, res) => {
+router.get("/", async (req, res) => {
   console.log("Accesed");
   try {
     // Retrieve the user's goals from the database
     const userGoals = await Goal.find({ user: req.session.currentUser._id });
-    res.render("myGoals", { goals: userGoals }); // Render the myGoals.hbs view and pass the user's goals as data
+    res.render("goals/myGoals", { goals: userGoals }); // Render the myGoals.hbs view and pass the user's goals as data
   } catch (error) {
     console.log(error);
-    res.render("myGoals", {
+    res.render("goals/myGoals", {
       errorMessage: "Failed to fetch goals. Please try again.",
     });
   }

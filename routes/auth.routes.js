@@ -85,6 +85,6 @@ router.post("/login", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-router.get("/userProfile", (req, res) => res.render("user/userProfile.hbs"));
+router.get("/userProfile", (req, res) => res.render("user/userProfile.hbs")); 
 
 module.exports = router;

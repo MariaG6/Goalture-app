@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose"); // store goal & steps data inside our database
 
 const stepSchema = new Schema({
   step: {
