@@ -9,7 +9,9 @@
     <p>Steps:</p>
     <ul>
         {{each goal.steps}}
-        <li>{{this.type}} (Completed: {{this.isCompleted}})</li> 
+        <li>
+            <a href="/my-goals/goal/{{this._id}}"></a>{{this.type}}
+             (Completed: {{this.isCompleted}})</li> 
         {{/each}}
     </ul>
 

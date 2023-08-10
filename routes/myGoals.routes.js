@@ -11,23 +11,26 @@ router.get("/createGoal", (req, res) => {
 });
 
 router.post("/createGoal", async (req, res) => {
-  const { user, title, category, reason, isPublic, isPrivate } = req.body;
-
+  const { user, title, category, reason, isPublic, isPrivate, step, step1, step2} = req.body;
+  console.log(req.body)
+  // if(!step || !step1 || !step2){
+  //   res.render()
+  // }
   try {
     // Create a new goal in the database
     await Goal.create({
-      user,
+      user :req.session.currentUser._id,
       title,
       category,
       reason,
-      isPublic,
-      isPrivate,
-      steps,
+      // isPublic,
+      // isPrivate,
+      steps: [{step}, {step: step1}, {step: step2}]
     });
-    res.redirect("my-goals"); // Redirect to the "My Goals" page after the goal is created
+    res.redirect("/my-goals"); // Redirect to the "My Goals" page after the goal is created
   } catch (error) {
     console.log(error);
-    res.render("createGoal", {
+    res.render("myGoals", {
       errorMessage: "Failed to create goal. Please try again.",
     });
   }
@@ -55,7 +58,7 @@ router.get("/goal/:goalId", (req, res) => {
       if (!goal) {
         return res.render("error", { errorMessage: "Goal not found." });
       }
-      res.render("goalDetails", { goal });
+      res.render("goals/goalDetails", { goal });
     })
     .catch((error) => {
       console.log(error, "Failed to view goal details.");
@@ -63,3 +66,4 @@ router.get("/goal/:goalId", (req, res) => {
 });
 
 module.exports = router;
+

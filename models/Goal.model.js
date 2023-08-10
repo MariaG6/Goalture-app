@@ -32,12 +32,12 @@ const goalSchema = new Schema(
     steps: {
       type: [stepSchema],
       required: true,
-      validate: {
-        validator: function (value) {
-          return value.length < 3 || value.length > 6;
-        },
-        message: "Goal must contain at least 3 steps and max 6",
-      },
+      // validate: {
+      //   validator: function (value) {
+      //     return value.length < 3 || value.length > 6;
+      // //   },
+      //   message: "Goal must contain at least 3 steps and max 6",
+      // },
     },
     category: {
       type: String,
