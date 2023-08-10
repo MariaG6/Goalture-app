@@ -1,28 +1,46 @@
-<div>
-  <h2>Signup</h2>
-  <form action="/signup" method="POST">
-
-    <label for="name">
-      Name
-      <input type="text" name="username" placeholder="Steve Jobs" />
-    </label>
-    <br />
-
-    <label for="email">
-      <input type="email" name="email" placeholder="Enter your email" />
-    </label>
-    <br />
-
-    <label for="password">
-      <input type="password" name="password" placeholder="******" />
+<div
+  class="text-center d-flex justify-content-center align-items-center vh-100"
+>
+  <div class="form-signin auth-form">
+    <form action="/signup" method="POST">
+      <img class="mb-4" src="./images/logo.JPG" alt="logo" width="400" />
+      <h1 class="auth-title">Signup!</h1>
+      <hr />
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          name="email"
+        />
+        <label for="email" class="bg-transparent">Email</label>
+      </div>
       <br />
-    </label>
-    <br />
+      <div class="form-floating">
+        <input
+          type="name"
+          class="form-control"
+          id="floatingInput"
+          name="username"
+        />
+        <label for="name" class="bg-transparent">Username</label>
+      </div>
+      <br />
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          name="password"
+        />
+        <label for="password" class="bg-transparent">Password</label>
+      </div>
+      <br />
+      <button class="auth-btn" type="submit">Create a User</button>
 
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-
-    <button type="submit">SIGNUP</button>
-  </form>
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
 </div>

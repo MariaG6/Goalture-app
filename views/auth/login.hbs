@@ -1,20 +1,36 @@
-<div>
-  <h2>Login</h2>
-  <form action="/login" method="POST">
+<div
+  class="text-center d-flex justify-content-center align-items-center vh-100"
+>
+  <div class="form-signin auth-form">
+    <form action="/login" method="POST">
+      <img class="mb-4" src="./images/logo.JPG" alt="logo" width="400" />
+      <h1 class="auth-title">Login</h1>
+      <hr />
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          name="email"
+        />
+        <label for="email" class="bg-transparent">Email</label>
+      </div>
+      <br />
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          name="password"
+        />
+        <label for="password" class="bg-transparent">Password</label>
+      </div>
+      <br />
+      <button class="auth-btn" type="submit">Connect</button>
 
-    <label for="email">
-      <input type="email" name="email" placeholder="Enter your email" />
-    </label>
-    <br />
-
-    <label for="password">
-      <input type="password" name="password" placeholder="******" />
-    </label>
-    <br />
-
-    <button type="submit">LOGIN</button>
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
 </div>
