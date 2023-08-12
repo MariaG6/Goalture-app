@@ -11,26 +11,39 @@ router.get("/createGoal", (req, res) => {
 });
 
 router.post("/createGoal", async (req, res) => {
-  const { user, title, category, reason, isPublic, isPrivate, step, step1, step2} = req.body;
-  console.log(req.body)
-  // if(!step || !step1 || !step2){
-  //   res.render()
-  // }
+  const {
+    user,
+    title,
+    category,
+    reason,
+    isPublic,
+    isPrivate,
+    step,
+    step1,
+    step2,
+  } = req.body;
+  console.log(req.body);
+  // Validation to have 3 steps
+  if (step === "" || step1 === "" || step2 === "") {
+    res.render("goals/createGoal", {
+      errorMessage: " Goal must contain at least 3 steps",
+    });
+  }
+  // Create a new goal in the database
   try {
-    // Create a new goal in the database
     await Goal.create({
-      user :req.session.currentUser._id,
+      user: req.session.currentUser._id,
       title,
       category,
       reason,
-      // isPublic,
-      // isPrivate,
-      steps: [{step}, {step: step1}, {step: step2}]
+      isPublic,
+      isPrivate,
+      steps: [{ step }, { step: step1 }, { step: step2 }],
     });
-    res.redirect("/my-goals"); // Redirect to the "My Goals" page after the goal is created
+    res.redirect("/"); // Redirect to the "My Goals" page after the goal is created
   } catch (error) {
     console.log(error);
-    res.render("myGoals", {
+    res.render("goals/myGoals", {
       errorMessage: "Failed to create goal. Please try again.",
     });
   }
@@ -38,7 +51,6 @@ router.post("/createGoal", async (req, res) => {
 
 // GET route to display the "My Goals" page
 router.get("/", async (req, res) => {
-  console.log("Accesed");
   try {
     // Retrieve the user's goals from the database
     const userGoals = await Goal.find({ user: req.session.currentUser._id });
@@ -93,4 +105,3 @@ router.post('/deleteGoal/:goalId', (req, res) => {
 
 
 module.exports = router;
-
