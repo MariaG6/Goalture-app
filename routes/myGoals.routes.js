@@ -1,15 +1,17 @@
 const router = require("express").Router(); // Require express to create routes
 const mongoose = require("mongoose"); // Handle MONDODB
 const Goal = require("../models/Goal.model"); // goalSchema connected to MONGODB
+const { isLoggedIn, isLoggedOut } = require("../middleware/route.guard"); // Require auth middleware to protect routes
 
 // Create a route for the Create Goal
 // Create a route to see all the goals page.
 
 // GET route to display the "Create Goal" form
-router.get("/createGoal", (req, res) => {
+router.get("/createGoal", isLoggedIn, (req, res) => {
   res.render("goals/createGoal"); // Render the createGoal.hbs view
 });
 
+// POST route to process the goal data to create
 router.post("/createGoal", async (req, res) => {
   const {
     user,
@@ -22,14 +24,12 @@ router.post("/createGoal", async (req, res) => {
     step1,
     step2,
   } = req.body;
-  console.log(req.body);
   // Validation to have 3 steps
   if (step === "" || step1 === "" || step2 === "") {
     res.render("goals/createGoal", {
       errorMessage: " Goal must contain at least 3 steps",
     });
   }
-  console.log(req.session);
   // Create a new goal in the database
   try {
     await Goal.create({
@@ -51,7 +51,7 @@ router.post("/createGoal", async (req, res) => {
 });
 
 // GET route to display the "My Goals" page
-router.get("/", async (req, res) => {
+router.get("/", isLoggedIn, async (req, res) => {
   try {
     // Retrieve the user's goals from the database
     const userGoals = await Goal.find({ user: req.session.currentUser._id });
@@ -64,8 +64,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Route for the goalDetails page, for a specific goal.
-router.get("/goal/:goalId", (req, res) => {
+// Route for the goalDetails page, for a specific goal.
+router.get("/goal/:goalId", isLoggedIn, (req, res) => {
   Goal.findById(req.params.goalId)
     .then((goal) => {
       if (!goal) {
