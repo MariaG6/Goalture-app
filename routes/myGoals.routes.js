@@ -65,5 +65,32 @@ router.get("/goal/:goalId", (req, res) => {
     });
 });
 
+// Route for editing a goal
+router.get('/editGoal/:goalId', (req, res) => {
+  Goal.findById(req.params.goalId)
+    .then((goal) => {
+      if (!goal) {
+        return res.render('error', { errorMessage: 'Goal not found.' });
+      }
+      res.render('goals/editGoal', { goal });
+    })
+    .catch((error) => {
+      console.log(error, 'Failed to view goal details.');
+    });
+});
+
+// Route for deleting a goal
+router.post('/deleteGoal/:goalId', (req, res) => {
+  Goal.findByIdAndDelete(req.params.goalId)
+    .then(() => {
+      res.redirect('/my-goals');
+    })
+    .catch((error) => {
+      console.log(error, 'Failed to delete goal.');
+      res.redirect('/my-goals'); // Redirect back to the goals list on error
+    });
+});
+
+
 module.exports = router;
 
