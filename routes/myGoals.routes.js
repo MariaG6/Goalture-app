@@ -29,6 +29,7 @@ router.post("/createGoal", async (req, res) => {
       errorMessage: " Goal must contain at least 3 steps",
     });
   }
+  console.log(req.session);
   // Create a new goal in the database
   try {
     await Goal.create({
@@ -40,7 +41,7 @@ router.post("/createGoal", async (req, res) => {
       isPrivate,
       steps: [{ step }, { step: step1 }, { step: step2 }],
     });
-    res.redirect("/"); // Redirect to the "My Goals" page after the goal is created
+    res.redirect("/my-goals"); // Redirect to the "My Goals" page after the goal is created
   } catch (error) {
     console.log(error);
     res.render("goals/myGoals", {
@@ -78,30 +79,27 @@ router.get("/goal/:goalId", (req, res) => {
 });
 
 // Route for editing a goal
-router.get('/editGoal/:goalId', (req, res) => {
-  Goal.findById(req.params.goalId)
+router.post("/editGoal/:goalId", (req, res) => {
+  const { title, category, reason } = req.body;
+  Goal.findByIdAndUpdate(req.params.goalId, { title, category, reason })
     .then((goal) => {
-      if (!goal) {
-        return res.render('error', { errorMessage: 'Goal not found.' });
-      }
-      res.render('goals/editGoal', { goal });
+      res.redirect("/my-goals");
     })
     .catch((error) => {
-      console.log(error, 'Failed to view goal details.');
+      console.log(error, "Failed to view goal details.");
     });
 });
 
 // Route for deleting a goal
-router.post('/deleteGoal/:goalId', (req, res) => {
+router.post("/deleteGoal/:goalId", (req, res) => {
   Goal.findByIdAndDelete(req.params.goalId)
     .then(() => {
-      res.redirect('/my-goals');
+      res.redirect("/my-goals");
     })
     .catch((error) => {
-      console.log(error, 'Failed to delete goal.');
-      res.redirect('/my-goals'); // Redirect back to the goals list on error
+      console.log(error, "Failed to delete goal.");
+      res.redirect("/my-goals"); // Redirect back to the goals list on error
     });
 });
-
 
 module.exports = router;
