@@ -1,7 +1,65 @@
-<h1>USERPROFILE</h1>
-  <form id="logout-form" action="/logout" method="POST">
-    <button>Logout</button>
-  </form>
-<button>
-    <a href="/my-goals/createGoal">CREATE A GOAL</a>
-</button>
+<!-- Nav bar -->
+<nav class="navbar navbar-light bg-transparent fixed-top">
+  <div class="container-fluid">
+    <a href="/" class="navbar-brand px-lg-4">
+      <img src="./images/onlyword.JPG" alt="GOALTURE" style="width: 300px;" />
+    </a>
+    <form id="logout-form" action="/logout" method="POST">
+      <button class="btn">Logout</button>
+    </form>
+  </div>
+</nav>
+
+<!-- Navbar End -->
+
+<!-- User Profile section -->
+
+<section class="h-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card">
+          <div
+            class="bg-profile d-flex justify-content-center align-items-center"
+            style="position: relative;"
+          >
+            <img
+              class="card-img position-absolute"
+              src="\images\default-user.png"
+              alt="userprofile-image"
+              class="bg-transparent"
+              style="width: 150px; z-index: 1; top: 50px; left: 20px;"
+            /></div>
+
+          <div class="card-body">
+            <h5 class="card-title description-title">{{user.username}}</h5>
+            <p class="card-text">Some quick example text to build on the card
+              title and make up the bulk of the card's content.</p>
+            <a href="/my-goals/createGoal" class="btn">CREATE A GOAL</a>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Total goals {{goals.index}}</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="/my-goals" class="text-muted card-link">Show all your goals</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+{{! 
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
+                  alt="image 1" class="w-100 rounded-3">
+                                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
+                  alt="image 1" class="w-100 rounded-3">
+                                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                  alt="image 1" class="w-100 rounded-3">
+                                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                  alt="image 1" class="w-100 rounded-3"> }}

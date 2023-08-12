@@ -78,3 +78,14 @@ label {
 .auth-title {
   color: #acb9a8;
 }
+
+/* User profile page */
+
+.bg-profile{
+  background-color: #acb9a8;
+  height: 200px;
+}
+
+.list-group{
+ background-color: #c3c088;
+}

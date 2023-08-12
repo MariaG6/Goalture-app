@@ -87,9 +87,13 @@ router.post("/login", (req, res) => {
 });
 
 // GET route to display the user profile page
-router.get("/userProfile", isLoggedIn, (req, res) => res.render("user/userProfile")); 
+router.get("/userProfile", isLoggedIn, (req, res) => {
+  const user = req.session.currentUser
+  console.log(user)
+  res.render("user/userProfile",{user})
+}); 
 
-//POST route to destoy session from the user
+// POST route to destoy session from the user
 router.post('/logout',(req,res,next) => {
   req.session.destroy(err => {
     if (err) next(err);
