@@ -85,13 +85,6 @@ router.post("/login", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-<<<<<<< HEAD
-router.get('/userProfile',(req,res)=> res.render('user/userProfile.hbs'))
-
-
-
-=======
 router.get("/userProfile", (req, res) => res.render("user/userProfile.hbs")); 
->>>>>>> ba04e3c16714fe0208c84cf4f3b45fd8657102ef
 
 module.exports = router;
