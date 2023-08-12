@@ -1,3 +1,63 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  a:hover {
+    color: #0056b3;
+  }
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="container">
+
+
 <a href="/userProfile">Profile</a>
 <a href="/my-goals">All my goals</a>
 
@@ -18,7 +78,6 @@
         {{this.isCompleted}})</li>
     {{/each}}
   </ul>
-
 </div>
 
 <button id="edit-goal">Edit Goal</button>
@@ -26,8 +85,6 @@
 <div id="edit-form" style="display: none;">
   <h2>Edit Goal</h2>
   <form method="POST" action="/my-goals/editGoal/{{goal._id}}">
-
-    <!-- Include other form fields here for editing -->
 
     <input
       type="text"
@@ -85,14 +142,17 @@
   <button type="submit" id="delete-goal">Delete Goal</button>
 </form>
 
-<!-- Add the JavaScript code to display a confirmation prompt -->
+
 <script>
-  const deleteButton = document.getElementById('delete-goal'); const deleteForm
-  = document.getElementById('delete-form');
-  deleteButton.addEventListener('click', () => { // Display a confirmation
-  prompt before deleting const confirmed = confirm('Are you sure you want to
-  delete this goal?'); if (confirmed) { deleteForm.submit(); // Submit the form
-  to perform the delete action } });
-</script>
+    const deleteButton = document.getElementById('delete-goal');
+    const deleteForm = document.getElementById('delete-form');
+    deleteButton.addEventListener('click', () => {
+      const confirmed = confirm('Are you sure you want to delete this goal?');
+      if (confirmed) {
+        deleteForm.submit();
+      }
+    });
+  </script>
+
 
 

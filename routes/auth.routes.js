@@ -1,3 +1,4 @@
+
 const router = require("express").Router(); // Require express to create routes
 const mongoose = require("mongoose"); // Handle MONDODB
 const bcryptjs = require("bcryptjs"); // Package to encryp user password
