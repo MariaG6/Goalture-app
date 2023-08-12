@@ -1,23 +1,16 @@
 <h1>Create your goal</h1>
 
 <form id="steps-form">
-  {{!-- <label for="steps">
-    Steps:
-    <ol id="step-container">
-      <li><input type="text" name="step" />
-        Do you have any blockers?
-        <input type="text" name="blockers" /><br />
-        <label for="isCompleted">Done</label>
-        <input type="checkbox" name="isCompleted" /><br />
-      </li>
-    </ol>
-  </label>
-  <small>Goal must contain at least 3 steps and max 6</small> --}}
   <button id="new-step">+ Create a new step</button>
 </form>
 
 <form action="/my-goals/createGoal" method="POST">
- <label for="steps">
+ <label for="title">
+  What is your goal?
+  <input type="text" name="title" required placeholder="Goals title" />
+  <br />
+</label>
+<label for="steps">
     Steps:
     <ol id="step-container">
       <li><input type="text" name="step" />
@@ -27,13 +20,10 @@
         <input type="checkbox" name="isCompleted" /><br />
       </li>
     </ol>
-  </label>
-  <small>Goal must contain at least 3 steps and max 6</small>
-<label for="title">
-  What is your goal?
-  <input type="text" name="title" required placeholder="Goals title" />
-  <br />
-</label>
+  </label> <br>
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
 
 <label for="category">Category:
   <select name="category" required>
