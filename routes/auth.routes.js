@@ -1,27 +1,14 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const router = require("express").Router(); // Require express to create routes
 const mongoose = require("mongoose"); // Handle MONDODB
 const bcryptjs = require("bcryptjs"); // Package to encryp user password
+const { isLoggedIn, isLoggedOut } = require('../middleware/route.guard') // Require auth middleware to protect routes
 
 const User = require("../models/User.model"); // userSchema connected to MONGODB
 const saltRounds = 12; // Times bcrypt run the salt
 
 // GET route display the signup form to users
-router.get("/signup", (req, res) => res.render("auth/signup"));
+router.get("/signup",isLoggedOut, (req, res) => res.render("auth/signup"));
 
 // POST route to process the user data to signup
 router.post("/signup", (req, res) => {
@@ -52,7 +39,7 @@ router.post("/signup", (req, res) => {
       (hashedPassword) =>
         User.create({ username, email, password: hashedPassword }) // ! Create a user
     )
-    .then((userDB) => res.redirect("/userProfile")) // <-- Send the user to userprofile with userdata
+    .then(() => res.redirect("/userProfile")) // <-- Send the user to userprofile with userdata
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         res.status(500).render("auth/signup", { errorMessage: error.message }); // Send an error if the email its not valid
@@ -67,7 +54,7 @@ router.post("/signup", (req, res) => {
 });
 
 // GET route display the login form to users
-router.get("/login", (req, res) => res.render("auth/login"));
+router.get("/login",isLoggedOut, (req, res) => res.render("auth/login"));
 
 // POST route to process the user data to login
 router.post("/login", (req, res) => {
@@ -100,8 +87,15 @@ router.post("/login", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-router.get('/userProfile',(req,res)=> res.render('user/userProfile.hbs'))
+// GET route to display the user profile page
+router.get("/userProfile", isLoggedIn, (req, res) => res.render("user/userProfile")); 
 
-// router.get("/userProfile", (req, res) => res.render("user/userProfile.hbs")); 
+//POST route to destoy session from the user
+router.post('/logout',(req,res,next) => {
+  req.session.destroy(err => {
+    if (err) next(err);
+    res.redirect('/')
+  })
+})
 
 module.exports = router;
