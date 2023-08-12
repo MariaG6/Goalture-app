@@ -1,0 +1,11 @@
+<!-- views goals -->
+<h1>My Goals</h1>
+<ul>
+  {{#each goals}}
+    <li>
+      <a href="my-goals/goal/{{this._id}}">
+        {{this.title}}
+      </a>
+    </li>
+  {{/each}}
+  </ul>

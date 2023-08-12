@@ -34,9 +34,10 @@ router.post("/signup", (req, res) => {
     .genSalt(saltRounds)
     .then((salt) => bcryptjs.hash(password, salt))
     .then(
-      (hashedPassword) => User.create({ username, email, password: hashedPassword }) // ! Create a user
+      (hashedPassword) =>
+        User.create({ username, email, password: hashedPassword }) // ! Create a user
     )
-    .then((userDB) => res.redirect("userProfile", { userDB })) // <-- Send the user to userprofile with userdata
+    .then((userDB) => res.redirect("/userProfile")) // <-- Send the user to userprofile with userdata
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         res.status(500).render("auth/signup", { errorMessage: error.message }); // Send an error if the email its not valid
@@ -84,9 +85,13 @@ router.post("/login", (req, res) => {
     .catch((error) => console.log(error));
 });
 
+<<<<<<< HEAD
 router.get('/userProfile',(req,res)=> res.render('user/userProfile.hbs'))
 
 
 
+=======
+router.get("/userProfile", (req, res) => res.render("user/userProfile.hbs")); 
+>>>>>>> ba04e3c16714fe0208c84cf4f3b45fd8657102ef
 
 module.exports = router;
