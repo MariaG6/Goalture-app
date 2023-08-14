@@ -19,7 +19,122 @@
 
   <body>
 
+    <!-- Nav bar -->
+    <nav class="navbar navbar-light bg-transparent fixed-top">
+      <!-- Logo -->
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand px-lg-4">
+          <img
+            src="./images/onlyword.JPG"
+            alt="GOALTURE"
+            style="width: 300px;"
+          />
+        </a>
+
+        <!-- Menu if isLoggedIn-->
+        {{#if user}}
+          <form id="logout-form" action="/logout" method="POST">
+            <button class="btn">Logout</button>
+          </form>
+          <!-- Menu if isLoggedIn End-->
+
+          <!-- Menu if isLoggedOut-->
+        {{else}}
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Offcanvas menu -->
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                Reach your full potential
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/"
+                  >Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="offcanvasNavbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Join us!
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="offcanvasNavbarDropdown"
+                  >
+                    <li><a class="dropdown-item" href="/login">Login</a></li>
+                    <li><a class="dropdown-item" href="/signup">Signup</a></li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#">Suggestions</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Menu if isLoggedOut End-->
+        {{/if}}
+      </div>
+
+    </nav>
+    <!-- Navbar End -->
+
     {{{body}}}
+
+    <!-- Footer -->
+    <div class="footer">
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4"
+      >
+        <div class="col-md-4 d-flex align-items-center">
+          <span class="mb-3 mb-md-0 text-muted">© 2023 Ironhack May Cohort -
+            Efty and María</span>
+        </div>
+        <div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <span class="mb-3 text-muted"><a
+              href="#"
+              class="btn bg-transparent link-underline-opacity-0 link-dark"
+            >
+              Github
+            </a></span>
+        </div>
+      </footer></div>
+    <!-- Footer End -->
+
     <!-- JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

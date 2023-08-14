@@ -38,7 +38,8 @@ router.post("/signup", (req, res) => {
       (hashedPassword) =>
         User.create({ username, email, password: hashedPassword }) // ! Create a user
     )
-    .then(() => res.redirect("/userProfile")) // <-- Send the user to userprofile with userdata
+    .then(() =>res.redirect("/userProfile") // <-- Send the user to userprofile with userdata
+    )
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         res.status(500).render("auth/signup", { errorMessage: error.message }); // Send an error if the email its not valid
@@ -77,7 +78,7 @@ router.post("/login", (req, res) => {
         return;
       } else if (bcryptjs.compareSync(password, user.password)) {
         // Check if the password is correct
-        req.session.currentUser = user; // Save the session info into user variable
+        req.session.currentUser = user; // Save the session info into user variable 
         res.redirect("/userProfile"); // <-- Send the user to userprofile
       } else {
         res.render("auth/login", { errorMessage: "Incorrect password" });
@@ -89,16 +90,15 @@ router.post("/login", (req, res) => {
 // GET route to display the user profile page
 router.get("/userProfile", isLoggedIn, (req, res) => {
   const user = req.session.currentUser
-  console.log(user)
-  res.render("user/userProfile",{user})
+  const completedStepsPercentage = req.session.completedStepsPercentage
+  res.render("user/userProfile",{user, completedStepsPercentage})
 }); 
 
 // POST route to destoy session from the user
 router.post('/logout',(req,res,next) => {
-  req.session.destroy(err => {
-    if (err) next(err);
-    res.redirect('/')
-  })
+  req.session.destroy()
+  req.app.locals.user=null
+  res.redirect('/')
 })
 
 module.exports = router;
