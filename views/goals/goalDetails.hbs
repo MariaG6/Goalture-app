@@ -11,22 +11,15 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
   h2 {
     font-size: 24px;
-    margin-bottom: 10px;
+
   }
   p {
     font-size: 16px;
     margin-bottom: 5px;
   }
-  ul {
-    list-style: none;
-    padding: 0;
-  }
+  
   li {
     margin-bottom: 10px;
     padding: 10px;
@@ -41,8 +34,8 @@
   }
   a:hover {
     color: #0056b3;
-  }
-  button {
+  } --}}
+  {{!-- button {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -120,18 +113,18 @@
 <a href="/userProfile">Profile</a>
 <a href="/my-goals">All my goals</a>
 
-<h1>Goal details</h1>
+<h1 class="text-align-center mb-0">Goal details</h1>
 
 <div>
-  <h2>{{goal.title}}</h2>
+  <h2 class="mb-10">{{goal.title}}</h2>
   <p>Category: {{goal.category}}</p>
   <p>Reason: {{goal.reason}}</p>
   <p>Is Public: {{goal.isPublic}}</p>
   <p>Is Private: {{goal.isPrivate}}</p>
   <p>Steps:</p>
-  <ul>
+  <ul class="p-0 list-group">
     {{#each goal.steps}}
-      <li>
+      <li class="list-group-item">
         <a href="/my-goals/goal/{{this._id}}">{{this.type}}</a>
         (Completed:
         {{this.isCompleted}})</li>
@@ -139,7 +132,7 @@
   </ul>
 </div>
 
-<button id="edit-goal">Edit Goal</button>
+<button id="edit-goal" class="btn">Edit Goal</button>
 
 <div id="edit-form" style="display: none;">
   <h2>Edit Goal</h2>
@@ -185,7 +178,7 @@
     <label for="isPrivate">Private:
       <input type="checkbox" name="isPrivate" /></label><br />
 
-    <button type="submit">Edit Goal</button>
+    <button type="submit" class="btn">Edit Goal</button>
   </form>
 </div>
 
@@ -198,7 +191,7 @@
 
 <!-- Add the Delete button -->
 <form id="delete-form" method="POST" action="/my-goals/deleteGoal/{{goal._id}}">
-  <button type="submit" id="delete-goal">Delete Goal</button>
+  <button type="submit" id="delete-goal" class="btn">Delete Goal</button>
 </form>
 
 

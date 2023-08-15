@@ -1,17 +1,3 @@
-<!-- Nav bar -->
-<nav class="navbar navbar-light bg-transparent fixed-top">
-  <div class="container-fluid">
-    <a href="/" class="navbar-brand px-lg-4">
-      <img src="./images/onlyword.JPG" alt="GOALTURE" style="width: 300px;" />
-    </a>
-    <form id="logout-form" action="/logout" method="POST">
-      <button class="btn">Logout</button>
-    </form>
-  </div>
-</nav>
-
-<!-- Navbar End -->
-
 <!-- User Profile section -->
 
 <section class="h-100">
@@ -19,47 +5,44 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-lg-9 col-xl-7">
         <div class="card">
-          <div
-            class="bg-profile d-flex justify-content-center align-items-center"
-            style="position: relative;"
-          >
-            <img
-              class="card-img position-absolute"
-              src="\images\default-user.png"
-              alt="userprofile-image"
-              class="bg-transparent"
-              style="width: 150px; z-index: 1; top: 50px; left: 20px;"
-            /></div>
+          <div class="bg-profile d-flex justify-content-center align-items-center" style="position: relative;">
+            <img class="card-img position-absolute" src="\images\default-user.png" alt="userprofile-image"
+              class="bg-transparent" style="width: 150px; z-index: 1; top: 50px; left: 20px;" />
+          </div>
 
           <div class="card-body">
             <h5 class="card-title description-title">{{user.username}}</h5>
-            <p class="card-text">Some quick example text to build on the card
-              title and make up the bulk of the card's content.</p>
+            <h4>Reach Your Full Potential: Organize and Plan Your Goals <br></h4>
+            <p class="card-text">
+            <ol>
+              <li>To reach your highest potential, it's crucial to organize and plan your goals. </li>
+              <li>Break down big objectives into manageable tasks and create a roadmap for success. </li>
+              <li>Planning helps you use your time and resources effectively. </li>
+              <li>With a clear plan, you'll focus your efforts where they matter most, leading you to unlock your true
+                capabilities.</li>
+            </ol>
+            </p>
             <a href="/my-goals/createGoal" class="btn">CREATE A GOAL</a>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Total goals {{goals.index}}</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item">Total goals: {{goals.length}}</li>
+            <li class="list-group-item">
+              <div class="card-body d-flex justify-content-center align-items-center">
+                <a href="/my-goals" class="text-muted card-link btn">Show all your goals</a>
+              </div>
+            </li>
           </ul>
           <div class="card-body">
-            <a href="/my-goals" class="text-muted card-link">Show all your goals</a>
+            <p class="mb-4 description-secondtitle"> Goals status </p>
+            {{#each goals}}
+            <p class=" mt-4 mb-1" style="font-size: .77rem;">{{this.title}}</p>
+            <div class="progress rounded" style="height: 5px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width:{{completedStepsPercentage}}"
+                aria-valuenow="{{completedStepsPercentage}}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            {{/each}}
           </div>
         </div>
       </div>
-
     </div>
-  </div>
-
 </section>
-
-{{! 
-
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                  alt="image 1" class="w-100 rounded-3">
-                                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                  alt="image 1" class="w-100 rounded-3">
-                                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                  alt="image 1" class="w-100 rounded-3">
-                                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                  alt="image 1" class="w-100 rounded-3"> }}
