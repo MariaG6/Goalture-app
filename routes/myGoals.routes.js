@@ -29,7 +29,9 @@ router.post("/createGoal", async (req, res) => {
     res.render("goals/createGoal", {
       errorMessage: " Goal must contain at least 3 steps",
     });
+    return; 
   }
+  console.log(req.session)
   // Create a new goal in the database
   try {
     await Goal.create({
