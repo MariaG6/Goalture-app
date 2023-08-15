@@ -71,13 +71,6 @@ router.get("/goal/:goalId", isLoggedIn, (req, res) => {
       if (!goal) {
         return res.render("error", { errorMessage: "Goal not found." });
       }
-  
-      // Progess in completed Steps
-      const totalSteps = this.steps.length
-      const completedSteps = steps.filter(steps.isCompleted.length)
-      let completedStepsPercentage = (completedSteps/totalSteps) * 100;
-      req.session.completedStepsPercentage = completedStepsPercentage; // Store in session
-
       res.render("goals/goalDetails", { goal });
     })
     .catch((error) => {

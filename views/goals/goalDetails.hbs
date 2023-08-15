@@ -121,9 +121,12 @@
 
 {{! This is to display the Edit form when the Edit button is clicked. }}
 <script>
-  const editButton = document.getElementById('edit-goal'); const editForm =
-  document.getElementById('edit-form'); editButton.addEventListener('click', ()
-  => { editForm.style.display = 'block'; });
+  const editButton = document.getElementById('edit-goal'); 
+  const editForm = document.getElementById('edit-form'); 
+  editButton.addEventListener('click', () => { 
+    console.log('click')
+    editForm.style.display = 'block'; 
+  });
 </script>
 
 <!-- Add the Delete button -->
