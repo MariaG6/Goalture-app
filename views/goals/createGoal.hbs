@@ -1,63 +1,69 @@
-<style>
-  /* Add the provided styling code here */
-  body {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
-    background-color: #f5f5f5;
-  }
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  form {
-    margin-top: 20px;
-  }
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  input[type="text"],
-  textarea,
-  select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  select {
-    height: 40px;
-  }
-  button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #427ab5;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  button[type="submit"]:hover {
-    background-color: #9f6b57;
-  }
-  .error {
-    color: #ff0000;
-    margin-top: 10px;
-  }
-</style>
-
-
+{{!-- 
 
 <div class="container">
+  <h1 class="text-center mb-4">Create Your Goal</h1>
+  <form id="steps-form">
+    <button id="new-step" class="btn btn-primary">+ Create a new step</button>
+  </form>
+  <form action="/my-goals/createGoal" method="POST">
+    <label class="mb-2">
+      What is your goal?
+      <input type="text" name="title" required class="form-control" placeholder="Goals title">
+    </label>
+    <label class="mb-2">
+      Steps:
+      <ol id="step-container" class="list-unstyled">
+        <li class="mb-2">
+          <input type="text" name="step" class="form-control">
+          Do you have any blockers?
+          <input type="text" name="blockers" class="form-control">
+          <label class="form-check-label">
+            Done
+            <input type="checkbox" name="isCompleted" class="form-check-input">
+          </label>
+        </li>
+      </ol>
+    </label>
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+    <label class="mb-2">
+      Category:
+      <select name="category" required class="form-select">
+        <option value="Health">Health</option>
+        <option value="Sports">Sports</option>
+        <option value="Personal Life">Personal Life</option>
+        <!-- Add other options -->
+      </select>
+    </label>
+    <div class="mb-2">
+      <label>
+        <p>
+          Why do you want this?
+        </p>
+        <textarea name="reason" class="form-control"></textarea>
+      </label>
+    </div>
+    <label class="form-check mb-2">
+      Public:
+      <input type="checkbox" name="isPublic" class="form-check-input">
+    </label>
+    <label class="form-check mb-2">
+      Private:
+      <input type="checkbox" name="isPrivate" class="form-check-input">
+    </label>
+    <button type="submit" class="btn btn-primary">CREATE YOUR GOAL!</button>
+  </form>
+</div>
+
+
+
+<
+
+
+
+
+
 
 <a href="/userProfile">Profile</a>
 <a href="/my-goals">All my goals</a>
@@ -119,6 +125,78 @@ h1 {
   <input type="checkbox" name="isPrivate" /></label><br />
 
 <button type="submit" >CREATE YOUR GOAL!</button>
-</form>
+</form> --}}
+
+
+<a href="/userProfile" class="btn btn-link">Profile</a>
+<a href="/my-goals" class="btn btn-link">All my goals</a>
+
+<div class="container">
+  <h1 class="text-center mb-4">Create your goal</h1>
+  
+  <form id="steps-form" class="mb-3">
+    <button id="new-step" class="btn btn-primary">+ Create a new step</button>
+  </form>
+  
+  <form action="/my-goals/createGoal" method="POST">
+    <div class="mb-3">
+      <label for="title" class="form-label">What is your goal?</label>
+      <input type="text" name="title" required class="form-control" placeholder="Goals title">
+    </div>
+    
+    <div class="mb-3">
+      <label for="steps" class="form-label">Steps:</label>
+      <ol id="step-container" class="list-group">
+        <li class="list-group-item">
+          <input type="text" name="step" class="form-control" placeholder="Step">
+          <label class="form-label">Do you have any blockers?</label>
+          <input type="text" name="blockers" class="form-control" placeholder="Blockers">
+          <div class="form-check">
+            <input type="checkbox" name="isCompleted" class="form-check-input">
+            <label class="form-check-label">Done</label>
+          </div>
+        </li>
+      </ol>
+    </div>
+    
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+    
+    <div class="mb-3">
+      <label for="category" class="form-label">Category:</label>
+      <select name="category" required class="form-select">
+        <option value="Health">Health</option>
+        <option value="Sports">Sports</option>
+        <option value="Personal Life">Personal Life</option>
+        <option value="Education">Education</option>
+        <option value="Career">Career</option>
+        <option value="Family">Family</option>
+        <option value="Financial goals">Financial goals</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Stop bad habits">Break habits</option>
+      </select>
+    </div>
+    
+    <div class="mb-3">
+      <label for="reason" class="form-label">Why do you want this?</label>
+      <textarea name="reason" class="form-control"></textarea>
+    </div>
+    
+    <div class="form-check mb-3">
+      <input type="checkbox" name="isPublic" class="form-check-input">
+      <label class="form-check-label">Public</label>
+    </div>
+    
+    <div class="form-check mb-3">
+      <input type="checkbox" name="isPrivate" class="form-check-input">
+      <label class="form-check-label">Private</label>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">CREATE YOUR GOAL!</button>
+  </form>
+</div>
+
+
 
 

@@ -1,4 +1,4 @@
-<style>
+{{!-- <style>
   /* Styling code */
   body {
     font-family: Arial, sans-serif;
@@ -35,11 +35,24 @@
   li a:hover {
     color: #0056b3;
   }
-</style>
+<style> --}}
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">My Goals</h1>
+  <ul class="list-unstyled">
+    {{#each goals}}
+      <li class="mb-3 p-3 bg-light rounded shadow-sm">
+        <a href="my-goals/goal/{{this._id}}" class="text-decoration-none font-weight-bold text-primary">
+          {{this.title}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
 
 <a href="/userProfile">Profile</a>
 <a href="/my-goals">All my goals</a>
-
 
 <h1>My Goals</h1>
 <ul>

@@ -1,4 +1,8 @@
-{{!-- 
+{{!-- <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
   .container {
     max-width: 800px;
     margin: 0 auto;
@@ -41,10 +45,69 @@
   }
   button:hover {
     background-color: #0056b3;
-  } --}}
+  }
+</style> --}}
 
 
 <div class="container">
+  <h1 class="text-center mb-4">Create Your Goal</h1>
+  <form id="steps-form">
+    <button id="new-step" class="btn btn-primary">+ Create a new step</button>
+  </form>
+  <form action="/my-goals/createGoal" method="POST">
+    <label class="mb-2">
+      What is your goal?
+      <input type="text" name="title" required class="form-control" placeholder="Goals title">
+    </label>
+    <label class="mb-2">
+      Steps:
+      <ol id="step-container" class="list-unstyled">
+        <li class="mb-2">
+          <input type="text" name="step" class="form-control">
+          Do you have any blockers?
+          <input type="text" name="blockers" class="form-control">
+          <label class="form-check-label">
+            Done
+            <input type="checkbox" name="isCompleted" class="form-check-input">
+          </label>
+        </li>
+      </ol>
+    </label>
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+    <label class="mb-2">
+      Category:
+      <select name="category" required class="form-select">
+        <option value="Health">Health</option>
+        <option value="Sports">Sports</option>
+        <option value="Personal Life">Personal Life</option>
+        <!-- Add other options -->
+      </select>
+    </label>
+    <div class="mb-2">
+      <label>
+        <p>
+          Why do you want this?
+        </p>
+        <textarea name="reason" class="form-control"></textarea>
+      </label>
+    </div>
+    <label class="form-check mb-2">
+      Public:
+      <input type="checkbox" name="isPublic" class="form-check-input">
+    </label>
+    <label class="form-check mb-2">
+      Private:
+      <input type="checkbox" name="isPrivate" class="form-check-input">
+    </label>
+    <button type="submit" class="btn btn-primary">CREATE YOUR GOAL!</button>
+  </form>
+</div>
+
+
+{{!-- <br /> --}}
+
 
 
 <a href="/userProfile">Profile</a>
