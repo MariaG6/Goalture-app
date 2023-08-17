@@ -37,7 +37,12 @@
   }
 <style> --}}
 
-<div class="container mt-5">
+
+
+
+
+
+{{!-- <div class="container mt-5">
   <h1 class="text-center mb-4">My Goals</h1>
   <ul class="list-unstyled">
     {{#each goals}}
@@ -63,6 +68,27 @@
       </a>
     </li>
   {{/each}}
-  </ul>
+  </ul> --}}
 
 
+<div class="container mt-5">
+  <h1 class="text-center mb-4">My Goals</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <ul class="list-group">
+        {{#each goals}}
+          <li class="list-group-item mb-3 p-3 bg-light rounded shadow-sm">
+            <a href="/my-goals/goal/{{this._id}}" class="text-decoration-none font-weight-bold text-primary">
+              {{this.title}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center mt-4">
+  <a href="/userProfile" class="btn btn-primary mx-2">Profile</a>
+  <a href="/my-goals" class="btn btn-primary mx-2">All my goals</a>
+</div>
