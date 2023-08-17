@@ -12,9 +12,11 @@
   color: #acb9a8;
 }
 
-body, html {
-  margin:0;
-  padding:0;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  padding-top: 16px; /* Nav bar total padding*/
   height: 100%;
 }
 
@@ -33,8 +35,8 @@ body, html {
   width: fit-content;
 }
 
-.description-secondtitle{
-  color:#c3c088;
+.description-secondtitle {
+  color: #c3c088;
 }
 
 .btn {
@@ -49,19 +51,6 @@ body, html {
 
 .btn:hover {
   background-color: #cfc479;
-}
-
-/* Footer */ 
-
-footer,
-footer div,
-footer span {
-  background-color: #acb9a8;
-  
-}
-
-.footer {
-  background-color: #acb9a8;
 }
 
 /* Signup & Login forms */
@@ -90,11 +79,26 @@ label {
 
 /* User profile page */
 
-.bg-profile{
+.bg-profile {
   background-color: #acb9a8;
   height: 200px;
 }
 
-.list-group{
- background-color: #c3c088;
+.list-group {
+  background-color: #c3c088;
+}
+
+/* Footer */
+
+footer,
+footer div,
+footer span {
+  background-color: #acb9a8;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0;
 }

@@ -34,6 +34,8 @@
         <!-- Menu if isLoggedIn-->
         {{#if user}}
           <form id="logout-form" action="/logout" method="POST">
+            <a href="/userProfile" class="btn">Profile</a>
+            <a href="/my-goals" class="btn">All my goals</a>
             <button class="btn">Logout</button>
           </form>
           <!-- Menu if isLoggedIn End-->
@@ -116,24 +118,24 @@
     {{{body}}}
 
     <!-- Footer -->
-    <div class="footer">
       <footer
-        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4"
+        class=" footer d-flex flex-wrap justify-content-between align-items-center "
       >
-        <div class="col-md-4 d-flex align-items-center">
-          <span class="mb-3 mb-md-0 text-muted">© 2023 Ironhack May Cohort -
+        <div class="col d-flex align-items-center">
+          <span class="text-muted">© 2023 Ironhack May Cohort -
             Efty and María</span>
         </div>
-        <div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <div class="nav col justify-content-end list-unstyled d-flex">
           <span class="mb-3 text-muted"><a
-              href="#"
+              href="https://github.com/MariaG6/Goalture-app"
               class="btn bg-transparent link-underline-opacity-0 link-dark"
             >
               Github
             </a></span>
         </div>
-      </footer></div>
+      </footer>
     <!-- Footer End -->
+
 
     <!-- JavaScript Libraries -->
     <script
