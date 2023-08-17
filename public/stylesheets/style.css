@@ -12,6 +12,12 @@
   color: #acb9a8;
 }
 
+body, html {
+  margin:0;
+  padding:0;
+  height: 100%;
+}
+
 /* Main page */
 
 .description-container {
@@ -45,10 +51,13 @@
   background-color: #cfc479;
 }
 
+/* Footer */ 
+
 footer,
 footer div,
 footer span {
   background-color: #acb9a8;
+  
 }
 
 .footer {

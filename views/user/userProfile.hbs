@@ -33,12 +33,12 @@
             </li>
           </ul>
           <div class="card-body">
-            <p class="mb-4 description-secondtitle"> Goals status </p>
+            <h4 class="mb-4"> Goals status </h4>
             {{#each goals}}
-            <p class=" mt-4 mb-1" style="font-size: .77rem;">{{this.title}}</p>
-            <div class="progress rounded" style="height: 5px;">
+            <p class=" mt-4 mb-1" >{{this.title}}</p>
+            <div class="progress rounded" style="height: 15px;">
               <div class="progress-bar bg-success" role="progressbar" style="width:{{completedStepsPercentage}}"
-                aria-valuenow="{{completedStepsPercentage}}" aria-valuemin="0" aria-valuemax="100"></div>
+                aria-valuenow="{{completedStepsPercentage}}" aria-valuemin="0" aria-valuemax="100">{{completedStepsPercentage}}%</div>
             </div>
             {{/each}}
           </div>

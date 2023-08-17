@@ -101,11 +101,10 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
           (step) => step.isCompleted
         ).length;
         let completedStepsPercentage =
-          (completedSteps / goal.steps.length) * 100;
-
+          Math.round((completedSteps / goal.steps.length) * 100);
         return { title: goal.title, completedStepsPercentage };
       });
-
+    
       res.render("user/userProfile", { goals: stepsCompleted });
     })
     .catch((error) => console.log(error));
