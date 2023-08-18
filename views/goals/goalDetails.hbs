@@ -21,7 +21,7 @@
 
   <div>
     
-    <button id="edit-goal" class="btn btn-primary mt-3" type="submit">Edit Goal</button>
+    <button id="edit-goal" class="btn btn-primary mt-3 mb-3" type="submit">Edit Goal</button>
 
     <div id="edit-form" style="display: none;">
       <h2>Edit Goal</h2>
@@ -80,19 +80,20 @@
       </li>
     {{/each}}
 
-        <button type="submit" class="btn btn-primary">Save Goal</button>
+        <button type="submit" class="btn btn-primary mt-2">Save Goal</button>
       </form>
     </div>
 
   </div>  
     <!-- Add the Delete button -->
-    <form
+    <div class="d-flex justify-content-center"><form
       id="delete-form"
       method="POST"
       action="/my-goals/deleteGoal/{{goal._id}}"
     >
       <button type="submit" id="delete-goal" class="btn btn-danger mt-3">Delete Goal</button>
-    </form>
+    </form></div>
+    
 </section>
 
 <script src="/js/editScript.js"></script>
