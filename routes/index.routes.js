@@ -1,7 +1,7 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-const router = express.Router();
-const User = require('../models/User.model')
+const router = require("express").Router(); // Require express to create routes
+
+// Require Schemas connected to MONGODB
+const User = require('../models/User.model') 
 const Goal = require('../models/Goal.model')
 
 
