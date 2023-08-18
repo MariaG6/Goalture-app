@@ -29,17 +29,23 @@ const generateStepHtml = (stepData, index) => {
   const currentStep = `step${index - 1}`;
   const currentBlocker = `blockers${index - 1}`;
   stepLi.innerHTML = `
-    <input type="text"  class="form-control" name="step${index}" value=" " />
-    <label class="form-label">Do you have any blockers?</label>
-    <input type="text" class="form-control" name="blockers${index}" value=" " />
-    <div class="form-check">
-    <input type="checkbox" name="isCompleted${index}" ${
-    stepData.isCompleted ? "checked" : ""} />
-    <label for="isCompleted">Done</label>
-     </div>
+     <label class="form-label bg-transparent">Step:</label>
+            <input type="text" name="step${index}" class="form-control" value=" "  />
+            <label class="form-label bg-transparent">Do you have any blockers?</label>
+            <input type="text" class="form-control" name="blockers${index}" value=" " />
+            <div class="form-check bg-transparent">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                name="isCompleted${index}" ${
+    stepData.isCompleted ? "checked" : ""
+  }
+              />
+              <label for="isCompleted" class="form-check-label bg-transparent">Done</label>
+            </div>
   `;
-  stepLi.className = 'list-group-item'
-  console.log(stepLi)
+  stepLi.className = "list-group-item";
+  console.log(stepLi);
   return stepLi;
 };
 
@@ -60,8 +66,8 @@ drawSteps();
 const editButton = document.getElementById("edit-goal");
 const editForm = document.getElementById("edit-form");
 editButton.addEventListener("click", () => {
-  console.log("click");
   editForm.style.display = "block";
+  console.log('click')
 });
 
 const deleteButton = document.getElementById("delete-goal");

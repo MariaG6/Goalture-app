@@ -31,7 +31,6 @@ router.post("/createGoal", async (req, res) => {
     });
     return;
   }
-  console.log(req.session);
   // Create a new goal in the database
   try {
     await Goal.create({
@@ -81,7 +80,7 @@ router.get("/goal/:goalId", isLoggedIn, (req, res) => {
 });
 
 // Route for editing a goal
-router.post("/editGoal/:goalId", (req, res) => {
+router.post("/goal/:goalId", (req, res) => {
   const { title, category, reason } = req.body;
   Goal.findByIdAndUpdate(req.params.goalId, { title, category, reason })
     .then((goal) => {
