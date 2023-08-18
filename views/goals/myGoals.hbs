@@ -1,16 +1,15 @@
-<a href="/userProfile">Profile</a>
-<a href="/my-goals">All my goals</a>
-
-<!-- views goals -->
-<h1>My Goals</h1>
-<ul>
-  {{#each goals}}
-    <li>
-      <a href="my-goals/goal/{{this._id}}">
-        {{this.title}}
-      </a>
-    </li>
-  {{/each}}
+<section class="w-100">
+  <h1 class="text-center mb-4">My Goals</h1>
+  <ul class="list-unstyled">
+    {{#each goals}}
+      <li class="mb-3 p-3 bg-light rounded shadow-sm">
+        <a
+          href="my-goals/goal/{{this._id}}"
+          class="text-decoration-none text-muted font-weight-bold text-primary bg-transparent"
+        >
+          {{this.title}}
+        </a>
+      </li>
+    {{/each}}
   </ul>
-
-
+</section>

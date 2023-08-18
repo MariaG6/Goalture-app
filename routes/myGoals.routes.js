@@ -29,6 +29,7 @@ router.post("/createGoal", async (req, res) => {
     res.render("goals/createGoal", {
       errorMessage: " Goal must contain at least 3 steps",
     });
+    return;
   }
   // Create a new goal in the database
   try {
@@ -79,7 +80,7 @@ router.get("/goal/:goalId", isLoggedIn, (req, res) => {
 });
 
 // Route for editing a goal
-router.post("/editGoal/:goalId", (req, res) => {
+router.post("/goal/:goalId", (req, res) => {
   const { title, category, reason } = req.body;
   Goal.findByIdAndUpdate(req.params.goalId, { title, category, reason })
     .then((goal) => {

@@ -1,63 +1,81 @@
-<a href="/userProfile">Profile</a>
-<a href="/my-goals">All my goals</a>
+<section class="w-100">
+  <div class="container">
+    <h1 class="text-center mb-4">Create your goal</h1>
+    <form action="/my-goals/createGoal" method="POST">
+      <div class="mb-3 form-floating">
+        <input
+          type="text"
+          name="title"
+          required
+          class="form-control"
+          id="floatingInput"
+        />
+        <label for="title" class="form-label bg-transparent">What is your goal?</label>
+      </div>
+      <div class="mb-3">
+        <label for="steps" class="form-label">Steps:</label>
+        <ol id="step-container" class="list-group">
+          <li class="list-group-item">
+            <label class="form-label bg-transparent">Step:</label>
+            <input type="text" name="step" class="form-control" />
+            <label class="form-label bg-transparent">Do you have any blockers?</label>
+            <input type="text" name="blockers" class="form-control" />
+            <div class="form-check bg-transparent">
+              <input
+                type="checkbox"
+                name="isCompleted"
+                class="form-check-input"
+              />
+              <label for="isCompleted" class="form-check-label bg-transparent">Done</label>
+            </div>
+          </li>
+        </ol>
+      </div>
 
-<h1>Create your goal</h1>
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
 
-<form id="steps-form">
-  <button id="new-step">+ Create a new step</button>
-</form>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category:</label>
+        <select name="category" required class="form-select">
+          <option value="Health">Health</option>
+          <option value="Sports">Sports</option>
+          <option value="Personal Life">Personal Life</option>
+          <option value="Education">Education</option>
+          <option value="Career">Career</option>
+          <option value="Family">Family</option>
+          <option value="Financial goals">Financial goals</option>
+          <option value="Lifestyle">Lifestyle</option>
+          <option value="Stop bad habits">Break habits</option>
+        </select>
+      </div>
 
-<form action="/my-goals/createGoal" method="POST">
- <label for="title">
-  What is your goal?
-  <input type="text" name="title" required placeholder="Goals title" />
-  <br />
-</label>
-<label for="steps">
-    Steps:
-    <ol id="step-container">
-      <li><input type="text" name="step" />
-        Do you have any blockers?
-        <input type="text" name="blockers" /><br />
-        <label for="isCompleted">Done</label>
-        <input type="checkbox" name="isCompleted" /><br />
-      </li>
-    </ol>
-  </label> <br>
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
+      <div class="mb-3">
+        <label for="reason" class="form-label">Why do you want this?</label>
+        <textarea name="reason" class="form-control"></textarea>
+      </div>
 
-<label for="category">Category:
-  <select name="category" required>
-    <option value="Health">Health</option>
-    <option value="Sports">Sports</option>
-    <option value="Personal Life">Personal Life</option>
-    <option value="Education">Education</option>
-    <option value="Career">Career</option>
-    <option value="Family">Family</option>
-    <option value="Financial goals">Financial goals</option>
-    <option value="Lifestyle">Lifestyle</option>
-    <option value="Stop bad habits">Stop bad habits</option>
-  </select>
-</label><br />
+      <div class="form-check d-flex justify-content-between mb-3">
+        <div>
+          <input type="checkbox" name="isPublic" class="form-check-input" />
+          <label class="form-check-label">Public</label>
+        </div>
+        <div>
+          <input type="checkbox" name="isPrivate" class="form-check-input" />
+          <label class="form-check-label">Private</label>
+        </div>
+      </div>
 
-<div>
-  <label for="reason">
-    <p>
-      Why do you want this?
-    </p>
-    <textarea name="reason"> </textarea>
-  </label>
-</div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="auth-btn">CREATE YOUR GOAL!</button>
+      </div>
+    </form>
 
-<label for="isPublic">Public:
-  <input type="checkbox" name="isPublic" /></label>
-
-<label for="isPrivate">Private:
-  <input type="checkbox" name="isPrivate" /></label><br />
-
-<button type="submit" >CREATE YOUR GOAL!</button>
-</form>
-
-
+    <div class="d-flex justify-content-center mt-3">
+      <form id="steps-form">
+        <button id="new-step" class="btn">+ Create a new step</button>
+      </form>
+    </div>
+  </div>
+</section>
