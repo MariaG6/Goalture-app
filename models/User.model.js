@@ -1,24 +1,23 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose"); // store user data inside our database
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
   {
     username: {
       type: String,
       trim: true,
-      required: false,
+      required: [true, 'Username is required'],
       unique: true
     },
     email: {
       type: String,
-      required: true,
+      required: [true, 'Email is required'],
       unique: true,
       lowercase: true,
       trim: true
     },
     password: {
       type: String,
-      required: true
+      required: [true, 'Password is required']
     }
   },
   {
