@@ -81,8 +81,30 @@ router.get("/goal/:goalId", isLoggedIn, (req, res) => {
 
 // Route for editing a goal
 router.post("/goal/:goalId", (req, res) => {
-  const { title, category, reason } = req.body;
-  Goal.findByIdAndUpdate(req.params.goalId, { title, category, reason })
+  console.log(req.body);
+  const {
+    title,
+    category,
+    reason,
+    editedSteps0,
+    editedSteps1,
+    editedSteps2,
+    editedStepsIsCompleted0,
+    editedStepsIsCompleted1,
+    editedStepsIsCompleted2,
+  } = req.body;
+
+  const newSteps = [
+    { step: editedSteps0, isCompleted: editedStepsIsCompleted0 ? true : false },
+    { step: editedSteps1, isCompleted: editedStepsIsCompleted1 ? true : false },
+    { step: editedSteps2, isCompleted: editedStepsIsCompleted2 ? true : false },
+  ];
+  Goal.findByIdAndUpdate(req.params.goalId, {
+    title,
+    category,
+    reason,
+    steps: newSteps,
+  })
     .then((goal) => {
       res.redirect("/my-goals");
     })

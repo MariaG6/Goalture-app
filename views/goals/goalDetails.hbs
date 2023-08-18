@@ -4,9 +4,9 @@
   <h5>Category: {{goal.category}}</h5>
   <h5>Reason: <p> {{goal.reason}} </p> </h5>
 
-  <small>Is Public: {{goal.isPublic}}</small>
+   <input type="checkbox" name="isPublic" value="{{goal.isPublic}}" class="form-check-input" {{#if isPublic}}checked{{/if}}><small>Is Public:</small>
   <br />
-  <small>Is Private: {{goal.isPrivate}}</small>
+   <input type="checkbox" name="isPrivate" value="{{goal.isPrivate}}" class="form-check-input" {{#if isPrivate}}checked{{/if}}><small>Is Private:</small>
 
   <hr />
   <p>Steps:</p>
@@ -14,28 +14,14 @@
   <ul class="p-0 list-group">
     {{#each goal.steps}}
       <li class="list-group-item">
-        <div class="form-check bg-transparent">
-          <input type="checkbox" name="editedStepsIsCompleted[]" value="{{_id}}" class="form-check-input" {{#if isCompleted}}checked{{/if}}>
-          <input type="text" name="editedSteps[]" value="{{step}}" class="form-control bg-transparent" />
-        </div>
-        {{!-- <a href="/my-goals/goal/{{this._id}}">{{this.type}}</a> --}}
-        {{!-- {{this.step}} --}}
-        {{!-- <input
-          type="text"
-          name="editedSteps[]"
-          value="{{this.step}}"
-          class="form-control"
-        />
-
-        (Completed:
-        {{this.isCompleted}}) --}}
+        {{step}}
       </li>
     {{/each}}
   </ul>
 
-  <div class="d-flex justify-content-between align-items-center mt-3">
+  <div>
     
-    <button id="edit-goal" class="btn btn-primary" type="submit">Edit Goal</button>
+    <button id="edit-goal" class="btn btn-primary mt-3" type="submit">Edit Goal</button>
 
     <div id="edit-form" style="display: none;">
       <h2>Edit Goal</h2>
@@ -84,17 +70,29 @@
           <input type="checkbox" name="isPrivate" class="form-check-input" />
           <label class="form-check-label">Private</label>
         </div>
+        {{#each goal.steps}}
+   
+      <li class="list-group-item">
+        <div class="form-check bg-transparent">
+          <input type="checkbox" name="editedStepsIsCompleted{{@index}}" class="form-check-input" {{#if isCompleted}}checked{{/if}}>
+          <input type="text" name="editedSteps{{@index}}" value="{{step}}" class="form-control bg-transparent" />
+        </div>
+      </li>
+    {{/each}}
 
         <button type="submit" class="btn btn-primary">Save Goal</button>
       </form>
     </div>
+
+  </div>  
     <!-- Add the Delete button -->
     <form
       id="delete-form"
       method="POST"
       action="/my-goals/deleteGoal/{{goal._id}}"
     >
-      <button type="submit" id="delete-goal" class="btn btn-danger">Delete Goal</button>
+      <button type="submit" id="delete-goal" class="btn btn-danger mt-3">Delete Goal</button>
     </form>
-  </div>
 </section>
+
+<script src="/js/editScript.js"></script>

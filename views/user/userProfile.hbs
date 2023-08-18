@@ -1,45 +1,66 @@
 <!-- User Profile section -->
-    <div class="row d-flex justify-content-center align-items-center my-5 w-100">
-      <div class="col col-lg-9 col-xl-7">
-        <div class="card">
-          <div class="bg-profile d-flex justify-content-center align-items-center" style="position: relative;">
-            <img class="card-img position-absolute" src="\images\default-user.png" alt="userprofile-image"
-              class="bg-transparent" style="width: 150px; z-index: 1; top: 50px; left: 20px;" />
-          </div>
+<div class="row d-flex justify-content-center align-items-center my-5 w-100">
+  <div class="col col-lg-9 col-xl-7">
+    <div class="card">
+      <div
+        class="bg-profile d-flex justify-content-center align-items-center"
+        style="position: relative;"
+      >
+        <img
+          class="card-img position-absolute"
+          src="\images\default-user.png"
+          alt="userprofile-image"
+          class="bg-transparent"
+          style="width: 150px; z-index: 1; top: 50px; left: 20px;"
+        />
+      </div>
 
-          <div class="card-body">
-            <h5 class="card-title description-title">{{user.username}}</h5>
-            <h4>Reach Your Full Potential: Organize and Plan Your Goals <br></h4>
-            <p class="card-text">
-            <ol>
-              <li>To reach your highest potential, it's crucial to organize and plan your goals. </li>
-              <li>Break down big objectives into manageable tasks and create a roadmap for success. </li>
-              <li>Planning helps you use your time and resources effectively. </li>
-              <li>With a clear plan, you'll focus your efforts where they matter most, leading you to unlock your true
-                capabilities.</li>
-            </ol>
-            </p>
-            <a href="/my-goals/createGoal" class="btn">CREATE A GOAL</a>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Total goals: {{goals.length}}</li>
-            <li class="list-group-item">
-              <div class="card-body d-flex justify-content-center align-items-center">
-                <a href="/my-goals" class="text-muted card-link btn">Show all your goals</a>
-              </div>
+      <div class="card-body">
+        <h5 class="card-title description-title">{{user.username}}</h5>
+        <h4>Reach Your Full Potential: Organize and Plan Your Goals <br /></h4>
+        <p class="card-text">
+          <ol>
+            <li>To reach your highest potential, it's crucial to organize and
+              plan your goals.
             </li>
-          </ul>
-          <div class="card-body">
-            <h4 class="mb-4"> Goals status </h4>
-            {{#each goals}}
-            <p class=" mt-4 mb-1" >{{this.title}}</p>
-            <div class="progress rounded" style="height: 15px;">
-              <div class="progress-bar bg-success" role="progressbar" style="width:{{completedStepsPercentage}}"
-                aria-valuenow="{{completedStepsPercentage}}" aria-valuemin="0" aria-valuemax="100">{{completedStepsPercentage}}%</div>
-            </div>
-            {{/each}}
+            <li>Break down big objectives into manageable tasks and create a
+              roadmap for success.
+            </li>
+            <li>Planning helps you use your time and resources effectively.
+            </li>
+            <li>With a clear plan, you'll focus your efforts where they matter
+              most, leading you to unlock your true capabilities.</li>
+          </ol>
+        </p>
+        <a href="/my-goals/createGoal" class="btn">CREATE A GOAL</a>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Total goals: {{goals.length}}</li>
+        <li class="list-group-item">
+          <div
+            class="card-body d-flex justify-content-center align-items-center"
+          >
+            <a href="/my-goals" class="text-muted card-link btn">Show all your
+              goals</a>
           </div>
-        </div>
+        </li>
+      </ul>
+      <div class="card-body">
+        <h4 class="mb-4"> Goals status </h4>
+        {{#each goals}}
+          <p class="mt-4 mb-1">{{this.title}}</p>
+          <div class="progress rounded" style="height: 15px;">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              style="width:{{completedStepsPercentage}}%"
+              aria-valuenow="{{completedStepsPercentage}}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >{{completedStepsPercentage}}%</div>
+          </div>
+        {{/each}}
       </div>
     </div>
-
+  </div>
+</div>
