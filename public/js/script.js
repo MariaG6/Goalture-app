@@ -1,12 +1,13 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("project2 JS imported successfully!");
+  console.log("Goalture imported successfully!");
 });
 
 // Create more steps at the creategoal form
 const steps = [];
 const stepsForm = document.getElementById("steps-form");
 let index = 0;
+let stepsButton = document.getElementById("new-step");
 stepsForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target); // get the values from the form and pass it as an object
@@ -24,7 +25,6 @@ const drawSteps = (fromEntries) => {
 };
 
 const generateStepHtml = (stepData, index) => {
-  console.log(stepData, index);
   const stepLi = document.createElement("li");
   const currentStep = `step${index - 1}`;
   const currentBlocker = `blockers${index - 1}`;
@@ -45,7 +45,9 @@ const generateStepHtml = (stepData, index) => {
             </div>
   `;
   stepLi.className = "list-group-item";
-  console.log(stepLi);
+  if (steps.length >= 3) {
+    stepsButton.disabled = true;
+  }
   return stepLi;
 };
 
@@ -61,20 +63,3 @@ const addNewStep = () => {
 
 // Initially draw the steps
 drawSteps();
-
-// This is to display the Edit form when the Edit button is clicked
-const editButton = document.getElementById("edit-goal");
-const editForm = document.getElementById("edit-form");
-editButton.addEventListener("click", () => {
-  editForm.style.display = "block";
-  console.log('click')
-});
-
-const deleteButton = document.getElementById("delete-goal");
-const deleteForm = document.getElementById("delete-form");
-deleteButton.addEventListener("click", () => {
-  const confirmed = confirm("Are you sure you want to delete this goal?");
-  if (confirmed) {
-    deleteForm.submit();
-  }
-});
